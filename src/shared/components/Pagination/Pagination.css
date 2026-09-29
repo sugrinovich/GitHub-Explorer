@@ -1,0 +1,27 @@
+.pagination {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.pagination__buttons{
+    display: inline-block;
+    margin-left: auto;
+}
+.pagination__buttons--item:first-child {
+    background-color: var(--bg);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--text);
+    border: 1px solid var(--text);
+}
+.pagination__buttons--item:last-child {
+    background-color: var(--text-h);
+    border-radius: 10px;
+    padding: 11px;
+    color: var(--bg);
+    min-width: 84px;
+    margin-left: 15px;
+}

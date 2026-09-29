@@ -1,0 +1,27 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 48px;
+  height: 80px;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--bg);
+}
+
+.menu {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu__list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.menu__item {
+    font-weight: 500;
+}
+.menu__item--active {
+    color: var(--accent);
+}

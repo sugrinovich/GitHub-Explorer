@@ -1,9 +1,13 @@
+import { Header } from "../shared/components/Header/Header";
+import { Body } from "../shared/components/Body/Body";
+
 function App() {
   return (
-    <div>
-      <h1>GitHub Explorer</h1>
-    </div>
-  );
+    <>
+      <Header/>
+      <Body/>
+    </>
+  )
 }
 
 export default App;
