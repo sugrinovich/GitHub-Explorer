@@ -1,6 +1,19 @@
+<<<<<<<< HEAD:src/shared/hooks/useRepoExplorer.ts
 import { useState, useEffect } from "react";
 import { isWithinUpdateFilter } from "../utils/getFilteredDate";
 import type { GitHubRepository, GitHubSearchResponse } from "../types/types";
+========
+import "./MainPageBody.css"
+import { RepoSortPanel } from "../RepoSort/RepoSortPanel";
+import { RepoCards } from "../RepoCards/RepoCards";
+import { RepoSearch } from "../RepoSearch/RepoSearch";
+import { Pagination } from "../Pagination/Pagination";
+import { useState } from "react";
+import { isWithinUpdateFilter } from "../../utils/getFilteredDate";
+import type { GitHubRepository, GitHubSearchResponse } from "../../types/types";
+import { useEffect } from "react";
+
+>>>>>>>> bb6f16650bd53504fd3616678a49f72b0f62f276:src/shared/components/Body/MainPageBody.tsx
 
 type SortFilters = {
     language: string;
@@ -9,10 +22,22 @@ type SortFilters = {
     sortBy: keyof GitHubRepository | "any";
 };
 
+<<<<<<<< HEAD:src/shared/hooks/useRepoExplorer.ts
 export function useRepoExplorer() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [resetAt, setReset] = useState(0);
+========
+export function MainPageBody() {
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [resetAt, setReset] = useState(0);
+    const [favorites, setFavorites] = useState<GitHubRepository[]>(() => {
+        const saved = localStorage.getItem("favorites");
+        return saved ? JSON.parse(saved) : [];
+    } 
+    );
+>>>>>>>> bb6f16650bd53504fd3616678a49f72b0f62f276:src/shared/components/Body/MainPageBody.tsx
 
     useEffect(() => {
         if (resetAt <= 0) return;
@@ -24,6 +49,21 @@ export function useRepoExplorer() {
         return () => clearInterval(id);
     }, [resetAt])
 
+<<<<<<<< HEAD:src/shared/hooks/useRepoExplorer.ts
+========
+    function toggleFavorite(repository: GitHubRepository) {
+        setFavorites(prev =>
+            prev.some(fav => fav.id === repository.id)
+                ? prev.filter(fav => fav.id !== repository.id)
+                : [...prev, repository]
+        );
+    }
+
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favorites))
+    }, [favorites])
+
+>>>>>>>> bb6f16650bd53504fd3616678a49f72b0f62f276:src/shared/components/Body/MainPageBody.tsx
     async function searchRepos(query: string) {
         setIsLoading(true);
         try {
@@ -99,7 +139,11 @@ export function useRepoExplorer() {
 
     function handleNext () {
         try {
+<<<<<<<< HEAD:src/shared/hooks/useRepoExplorer.ts
             if (page === 0 && totalPages === 0) throw new Error("Нет страниц для просмотра!!!");
+========
+            if (page === 0 && totalPages === 0) throw new Error("Нет страниц для просмотра!!!")
+>>>>>>>> bb6f16650bd53504fd3616678a49f72b0f62f276:src/shared/components/Body/MainPageBody.tsx
             if (page + 1 <= totalPages) setPage(page + 1);
             else throw new Error("Вы находитесь на последней странице!!!");
         }
@@ -117,6 +161,7 @@ export function useRepoExplorer() {
             alert(Error)
         }
     }
+<<<<<<<< HEAD:src/shared/hooks/useRepoExplorer.ts
 
     return {
         isLoading, resetAt, items, allItems, page,  
@@ -124,3 +169,27 @@ export function useRepoExplorer() {
         handleNext, handlePrevious, searchRepos, handleSort, setPage
     };
 }
+========
+    return (
+        <section className="Body">
+            <RepoSearch onSearch={searchRepos} isLoading={isLoading} secondsLeft={resetAt}/>
+            <h3 className="Body__title">Explore repositories</h3>
+            <div className="Body__data">
+                <RepoSortPanel items={items} onSort={handleSort} setPage={setPage}/>
+                <div className="Body__list">
+                    <RepoCards items={items} 
+                               start={startIndex} 
+                               end={endIndex} 
+                               toggleFav={toggleFavorite} 
+                               storage={favorites}
+                               firstPage={firstPage}/>
+                    <Pagination page={page} 
+                                totalPages={totalPages} 
+                                toNext={Next} 
+                                toPrev={Previous}/>  
+                </div>              
+            </div>
+        </section>
+    )
+}
+>>>>>>>> bb6f16650bd53504fd3616678a49f72b0f62f276:src/shared/components/Body/MainPageBody.tsx
