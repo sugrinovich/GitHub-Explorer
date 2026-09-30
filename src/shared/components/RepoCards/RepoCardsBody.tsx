@@ -2,6 +2,7 @@ import { numberFormatter } from "../../utils/numbersFormatter";
 import { dateFormatter} from "../../utils/dateFormatter";
 import type { GitHubRepository } from "../../types/types";
 import "./RepoCards.css";
+import { getLanguageColor } from "../../utils/getLanguageColor";
 
 interface RepoCardsBodyProps {
     repository: GitHubRepository;
@@ -10,8 +11,8 @@ interface RepoCardsBodyProps {
 export function RepoCardsBody({ repository }: RepoCardsBodyProps) {
     return (
         <div className="repoCards__body">
-            <p className="repoCards__body--text">
-                {repository.language}
+            <p className="repoCards__body--text" style={{ "--lang-color": getLanguageColor(repository.language) } as React.CSSProperties}>
+                {(repository.language) ? repository.language : "None"}
             </p>
 
             <p className="repoCards__body--text">

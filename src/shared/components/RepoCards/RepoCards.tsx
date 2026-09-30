@@ -7,34 +7,42 @@ interface RepoCardsProps {
     items: GitHubRepository[];
     start: number;
     end: number;
-    toggleFav: (id: number) => void;
-    storage: number[];
+    toggleFavorite: (repository: GitHubRepository) => void;
+    storage: GitHubRepository[];
+    firstPage: number;
 }
 
-export function RepoCards({items, start, end, toggleFav, storage}: RepoCardsProps) {
+export function RepoCards({items, start, end, toggleFavorite, storage, firstPage}: RepoCardsProps) {
     return (
         <section style = {{
-            display: "grid",
-            gap: "1rem"
+            display: "flex",
+            gap: "1rem",
+            flexDirection: "column",
+            flex: "1"
 
         }}>
-        {items.slice(start, end).map(repository => (
-            <div
-                key={repository.id}
-                className="repoCards"
-            >
-                <RepoCardsHeader repository={repository} toggleFav={toggleFav} storage={storage}/>
 
-                <div className="repoCards__description">
+        {
+            firstPage === 0 ? <div className="Extra">
+                                <p className="Extra__title">Empty for now</p>
+                            </div> : items.slice(start, end).map(repository => (
+                <div
+                    key={repository.id}
+                    className="repoCards"
+                >
+                    <RepoCardsHeader repository={repository} toggleFavorite={toggleFavorite} storage={storage}/>
 
-                    <p className="repoCards__description--text">
-                        {repository.description}
-                    </p>
-                    <RepoCardsBody repository={repository}/>
+                    <div className="repoCards__description">
 
+                        <p className="repoCards__description--text">
+                            {(repository.description) ? repository.description : "No description"}
+                        </p>
+                        <RepoCardsBody repository={repository}/>
+
+                    </div>
                 </div>
-            </div>
-        ))}              
+            ))
+        }           
         </section>
     )
 }

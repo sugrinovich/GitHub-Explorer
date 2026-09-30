@@ -3,12 +3,12 @@ import "./RepoCards.css";
 
 interface RepoCardsHeaderProps {
     repository: GitHubRepository;
-    toggleFav: (id: number) => void;
-    storage: number[];
+    toggleFavorite: (repository: GitHubRepository) => void;
+    storage: GitHubRepository[];
 }
 
-export function RepoCardsHeader({ repository, toggleFav, storage}: RepoCardsHeaderProps) {
-    const isFavorite = storage.includes(repository.id);
+export function RepoCardsHeader({ repository, toggleFavorite, storage}: RepoCardsHeaderProps) {
+    const isFavorite = storage.some(el => el.id === repository.id);
     return (
         <div className="repoCards__header">
             <div className="repoCards__header--avatar">
@@ -20,7 +20,7 @@ export function RepoCardsHeader({ repository, toggleFav, storage}: RepoCardsHead
             </h3>
 
             <button className="repoCards__header--button"
-                onClick={() => toggleFav(repository.id)}>
+                onClick={() => toggleFavorite(repository)}>
                 {(isFavorite) ? "Delete" : "Save"}
             </button>
         </div>

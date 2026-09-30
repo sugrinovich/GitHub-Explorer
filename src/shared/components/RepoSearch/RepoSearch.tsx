@@ -1,5 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./RepoSearch.css"
+import { getLanguageColor } from "../../utils/getLanguageColor";
+getLanguageColor
 
 interface RepoSearchProps {
 
@@ -32,10 +34,30 @@ export function RepoSearch({onSearch, isLoading, secondsLeft}: RepoSearchProps) 
             </div>
 
             <p className="repoSearch__tags">POPULAR SEARCHES: 
-                <span className="repoSearch__tags--item">react</span>
-                <span className="repoSearch__tags--item">typescript</span>
-                <span className="repoSearch__tags--item">developer tool</span>
-                <span className="repoSearch__tags--item">ai agents</span></p>
+                <span className="repoSearch__tags--item" 
+                    style={{ "--lang-color": getLanguageColor("React") 
+                    } as React.CSSProperties}
+                    onClick={() => onSearch("react")}>
+                    react
+                </span>
+                <span className="repoSearch__tags--item" 
+                    style={{ "--lang-color": getLanguageColor("TypeScript") 
+                    } as React.CSSProperties}
+                    onClick={() => onSearch("typescript")}>
+                    typescript
+                    </span>
+                <span className="repoSearch__tags--item" 
+                    style={{ "--lang-color": getLanguageColor("Developer tools") 
+                    } as React.CSSProperties}
+                    onClick={() => onSearch("developer tools")}>
+                    developer tool
+                    </span>
+                <span className="repoSearch__tags--item" 
+                    style={{ "--lang-color": getLanguageColor("Ai agents") 
+                    } as React.CSSProperties}
+                    onClick={() => onSearch("ai agents")}>
+                    ai agents
+                </span></p>
         </section>
     )
 }

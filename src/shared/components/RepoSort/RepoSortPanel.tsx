@@ -7,7 +7,7 @@ import type { Dispatch, SetStateAction } from "react";
 interface RepoSortPanelProps {
 
     items: GitHubRepository[];
-    onSort: (filters: {
+    handleSort: (filters: {
         language: string;
         minStars: string;
         updated: string;
@@ -16,7 +16,7 @@ interface RepoSortPanelProps {
     setPage: Dispatch<SetStateAction<number>>;
 }
 
-export function RepoSortPanel({items, onSort, setPage}: RepoSortPanelProps) {
+export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) {
 
     const languageOptions = items.reduce<string[]>((arr, cur) => {
         if (cur.language && !arr.some(lang => lang.toLocaleLowerCase() === cur.language?.toLocaleLowerCase())) arr.push(cur.language);
@@ -116,7 +116,7 @@ export function RepoSortPanel({items, onSort, setPage}: RepoSortPanelProps) {
             <hr className="repoSortPanel__line" />
 
             <div className="repoSortPanel__group">
-                <label className="repoSortPanel__group--title" htmlFor="sorted">SORT BY</label>
+                <label className="repoSortPanel__group--title" htmlFor="sorted">SORT BY BEST</label>
                 
                 <select 
                     className="repoSortPanel__group--select" 
@@ -136,7 +136,7 @@ export function RepoSortPanel({items, onSort, setPage}: RepoSortPanelProps) {
             <div className="repoSortPanel__btn--wrapper">
                 <button 
                     className="repoSortPanel__btn"
-                    onClick={() => (setPage(1), onSort({
+                    onClick={() => (setPage(1), handleSort({
                         language: "any",
                         minStars: "any",
                         updated: "any",
@@ -146,7 +146,7 @@ export function RepoSortPanel({items, onSort, setPage}: RepoSortPanelProps) {
                 </button>
                 <button 
                     className="repoSortPanel__btn"
-                    onClick={() => (setPage(1), onSort({
+                    onClick={() => (setPage(1), handleSort({
                         language: filterLanguage,
                         minStars: minStar,
                         updated: filterUpdate,

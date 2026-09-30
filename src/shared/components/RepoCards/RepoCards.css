@@ -80,7 +80,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: var(--accent);
+    background-color: var(--lang-color, var(--accent));
     display: inline-block;
 }
 
@@ -119,4 +119,19 @@
 .repoCards__description--text {
     color: var(--text);
     font-size: 18px;  
+}
+
+.Extra {
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    max-height: 585px;
+}
+.Extra__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text); 
 }

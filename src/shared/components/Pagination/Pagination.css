@@ -16,6 +16,7 @@
     padding: 10px;
     color: var(--text);
     border: 1px solid var(--text);
+    transition: transform 0.2s ease;
 }
 .pagination__buttons--item:last-child {
     background-color: var(--text-h);
@@ -24,4 +25,8 @@
     color: var(--bg);
     min-width: 84px;
     margin-left: 15px;
+    transition: transform 0.2s ease;
+}
+.pagination__buttons--item:hover {
+    transform: scale(1.15);
 }

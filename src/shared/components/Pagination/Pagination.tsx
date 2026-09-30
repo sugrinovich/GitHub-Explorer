@@ -4,11 +4,11 @@ interface PaginationProps {
 
     page: number;
     totalPages: number;
-    toNext: () => void;
-    toPrev: () => void;
+    handleNext: () => void;
+    handlePrev: () => void;
 }
 
-export function Pagination({page, totalPages, toNext, toPrev}: PaginationProps) {
+export function Pagination({page, totalPages, handleNext, handlePrev}: PaginationProps) {
     return (
         <div className="pagination">
             <p>
@@ -17,10 +17,10 @@ export function Pagination({page, totalPages, toNext, toPrev}: PaginationProps) 
             <div className="pagination__buttons">
                 <button 
                     className="pagination__buttons--item"
-                    onClick={() => toPrev()}>Previous</button>
+                    onClick={() => handlePrev()}>Previous</button>
                 <button 
                     className="pagination__buttons--item"
-                    onClick={() => toNext()}>Next →</button>
+                    onClick={() => handleNext()}>Next →</button>
             </div>
         </div>
     )
