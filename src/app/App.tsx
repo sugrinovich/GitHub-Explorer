@@ -1,12 +1,13 @@
-import { Header } from "../shared/components/Header/Header";
-import { Body } from "../shared/components/Body/Body";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MainPage } from "../pages/mainPage";
 
 function App() {
   return (
-    <>
-      <Header/>
-      <Body/>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

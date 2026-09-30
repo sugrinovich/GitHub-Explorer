@@ -43,6 +43,7 @@
     padding: 10px;
     border-radius: 10px;
     margin-top: 20px;
+    transition: transform 0.2s ease;
 }
 .repoSortPanel__btn:first-child {
     background-color: var(--text-h);
@@ -52,9 +53,13 @@
     border-radius: 10px;
     margin-top: 20px;
     min-width: 76px;
+    transition: transform 0.2s ease;
 }
 .repoSortPanel__btn--wrapper {
     display: flex;
     justify-content: center;
     gap: 20px; 
+}
+.repoSortPanel__btn:hover {
+    transform: scale(1.15);
 }

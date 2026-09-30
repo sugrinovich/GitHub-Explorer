@@ -116,7 +116,7 @@ export function RepoSortPanel({items, onSort, setPage}: RepoSortPanelProps) {
             <hr className="repoSortPanel__line" />
 
             <div className="repoSortPanel__group">
-                <label className="repoSortPanel__group--title" htmlFor="sorted">SORT BY</label>
+                <label className="repoSortPanel__group--title" htmlFor="sorted">SORT BY BEST</label>
                 
                 <select 
                     className="repoSortPanel__group--select" 

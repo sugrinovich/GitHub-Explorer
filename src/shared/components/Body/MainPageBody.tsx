@@ -1,4 +1,4 @@
-import "./Body.css"
+import "./MainPageBody.css"
 import { RepoSortPanel } from "../RepoSort/RepoSortPanel";
 import { RepoCards } from "../RepoCards/RepoCards";
 import { RepoSearch } from "../RepoSearch/RepoSearch";
@@ -16,11 +16,11 @@ type SortFilters = {
     sortBy: keyof GitHubRepository | "any";
 };
 
-export function Body() {
+export function MainPageBody() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [resetAt, setReset] = useState(0);
-    const [favorites, setFavorites] = useState<number[]>(() => {
+    const [favorites, setFavorites] = useState<GitHubRepository[]>(() => {
         const saved = localStorage.getItem("favorites");
         return saved ? JSON.parse(saved) : [];
     } 
@@ -34,11 +34,12 @@ export function Body() {
         return () => clearInterval(id);
     }, [resetAt])
 
-    function toggleFavorite(id: number) {
-        setFavorites(el => 
-            el.includes(id) ? el.filter(cur => cur !== id) : [...el, id]
+    function toggleFavorite(repository: GitHubRepository) {
+        setFavorites(prev =>
+            prev.some(fav => fav.id === repository.id)
+                ? prev.filter(fav => fav.id !== repository.id)
+                : [...prev, repository]
         );
-        console.log(id, favorites)
     }
 
     useEffect(() => {
@@ -117,6 +118,7 @@ export function Body() {
 
     function Next () {
         try {
+            if (page === 0 && totalPages === 0) throw new Error("Нет страниц для просмотра!!!")
             if (page + 1 <= totalPages) setPage(page + 1);
             else throw new Error("Вы находитесь на последней странице!!!")
         }
@@ -140,8 +142,16 @@ export function Body() {
             <div className="Body__data">
                 <RepoSortPanel items={items} onSort={handleSort} setPage={setPage}/>
                 <div className="Body__list">
-                    <RepoCards items={items} start={startIndex} end={endIndex} toggleFav={toggleFavorite} storage={favorites}/>
-                    <Pagination page={page} totalPages={totalPages} toNext={Next} toPrev={Previous}/>  
+                    <RepoCards items={items} 
+                               start={startIndex} 
+                               end={endIndex} 
+                               toggleFav={toggleFavorite} 
+                               storage={favorites}
+                               firstPage={firstPage}/>
+                    <Pagination page={page} 
+                                totalPages={totalPages} 
+                                toNext={Next} 
+                                toPrev={Previous}/>  
                 </div>              
             </div>
         </section>
