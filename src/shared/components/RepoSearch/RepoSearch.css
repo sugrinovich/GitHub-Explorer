@@ -1,0 +1,66 @@
+.repoSearch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+.repoSearch__title {
+    color: var(--text-h);
+    font-size: 40px;
+    margin-top: 2rem;
+}
+.repoSearch__descrption {
+    margin-top: 0.8rem;
+    font-weight: 500;
+}
+.repoSearch--wrapper {
+    position: relative; 
+    margin-top: 0.8rem;
+}
+
+.repoSearch__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 25px;
+}
+.repoSearch__input {
+    width: 100%;
+    min-height: 50px;
+    padding: 20px 150px 20px 50px;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+}
+.repoSearch__button {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    transform: translateY(-50%); 
+    background-color: var(--accent);
+    color: var(--bg);
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+.repoSearch__button:hover  {
+    transform: translateY(-50%) scale(1.15);
+}
+.repoSearch__tags {
+    margin-top: 0.8rem;
+    font-weight: 600;
+}
+.repoSearch__tags--item {
+    display: inline-block;
+    color: var(--bg);
+    background-color: var(--lang-color, var(--accent));
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.repoSearch__tags--item:hover {
+    transform: scale(1.15);
+}

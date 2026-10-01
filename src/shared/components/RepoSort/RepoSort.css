@@ -1,0 +1,68 @@
+.repoSortPanel {
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding-bottom: 20px;
+    margin-right: 0;
+}
+.repoSortPanel__title {
+    padding: 20px 10px 0 20px;
+}
+.repoSortPanel__group {
+    padding: 20px 10px 0 20px;
+    border: none;
+    margin: 0;
+}
+
+.repoSortPanel__group--title {
+    display: block;
+    padding: 0;
+}
+.repoSortPanel__group--select {
+    margin-top: 10px;
+    width: 95%;
+    font-size: 16px;
+    padding: 10px 5px;
+}
+.repoSortPanel__line {
+    color: var(--border);
+    width: 90%;
+    font-weight: 100;
+    opacity: 0.4;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+.repoSortPanel__group--item {
+    display: flex;
+    align-items: center;  
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.repoSortPanel__btn:last-child {
+    background-color: var(--accent);
+    color: var(--bg);
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+}
+.repoSortPanel__btn:first-child {
+    background-color: var(--text-h);
+    color: var(--bg);
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    min-width: 76px;
+    transition: transform 0.2s ease;
+}
+.repoSortPanel__btn--wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+}
+.repoSortPanel__btn:hover {
+    transform: scale(1.15);
+}

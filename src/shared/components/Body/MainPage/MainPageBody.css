@@ -1,0 +1,22 @@
+.Body {
+    width: 90%;
+    margin: auto;
+    padding-bottom: 20px;
+}
+.Body__data {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    margin: auto;
+    gap: 15px;
+    margin-top: 15px;
+}
+.Body__title {
+    margin-top: 40px;
+    color: var(--text-h);
+    font-size: 25px;
+    
+}
+.Body__list {
+    display: flex;
+    flex-direction: column;
+}
