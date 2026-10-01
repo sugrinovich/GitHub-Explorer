@@ -28,7 +28,7 @@ export function RepoSearch({onSearch, isLoading, secondsLeft}: RepoSearchProps) 
                 className="repoSearch__button"
                 type="button"
                 onClick={() => onSearch(inputValue)}
-                disabled={isLoading || secondsLeft > 30}>
+                disabled={isLoading || secondsLeft > 0}>
                     {isLoading ? "Loading..." : secondsLeft ? `Reset at ${secondsLeft}` : "Search repo"}
                 </button>
             </div>
@@ -37,25 +37,33 @@ export function RepoSearch({onSearch, isLoading, secondsLeft}: RepoSearchProps) 
                 <span className="repoSearch__tags--item" 
                     style={{ "--lang-color": getLanguageColor("React") 
                     } as React.CSSProperties}
-                    onClick={() => onSearch("react")}>
+                    onClick={() => {
+                        if (secondsLeft === 0) onSearch("react")
+                    }}>
                     react
                 </span>
                 <span className="repoSearch__tags--item" 
                     style={{ "--lang-color": getLanguageColor("TypeScript") 
                     } as React.CSSProperties}
-                    onClick={() => onSearch("typescript")}>
+                    onClick={() => {
+                        if (secondsLeft === 0) onSearch("typescript")
+                    }}>
                     typescript
                     </span>
                 <span className="repoSearch__tags--item" 
                     style={{ "--lang-color": getLanguageColor("Developer tools") 
                     } as React.CSSProperties}
-                    onClick={() => onSearch("developer tools")}>
+                    onClick={() => {
+                        if (secondsLeft === 0) onSearch("developer tools")
+                    }}>
                     developer tool
                     </span>
                 <span className="repoSearch__tags--item" 
                     style={{ "--lang-color": getLanguageColor("Ai agents") 
                     } as React.CSSProperties}
-                    onClick={() => onSearch("ai agents")}>
+                    onClick={() => {
+                        if (secondsLeft === 0) onSearch("ai agents")
+                    }}>
                     ai agents
                 </span></p>
         </section>

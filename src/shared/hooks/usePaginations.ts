@@ -12,6 +12,7 @@ export function usePaginations({ items }: usePaginationsProps) {
 
     const [page, setPage] = useState(firstPage);
 
+
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 

@@ -5,7 +5,7 @@ export function Header () {
     return (
         <div className="header">
             <div className="header__logo">
-                <h3>RepoScope</h3>
+                <h3 className="header__title">RepoScope</h3>
             </div>
             <nav className="menu">
                 <ul className="menu__list">

@@ -18,6 +18,8 @@ interface RepoSortPanelProps {
 
 export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) {
 
+    const isItems = (items.length === 0) ? true : false;
+
     const languageOptions = items.reduce<string[]>((arr, cur) => {
         if (cur.language && !arr.some(lang => lang.toLocaleLowerCase() === cur.language?.toLocaleLowerCase())) arr.push(cur.language);
 
@@ -40,6 +42,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
                 <select 
                     className="repoSortPanel__group--select" 
                     id="language"
+                    value={filterLanguage}
                     onChange={e => setLanguage(e.target.value)}>
                     <option value="any">Any language</option>   
                     {languageOptions.sort().map(el => (
@@ -70,6 +73,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
                     type="radio" 
                     name="minStars" 
                     value="100" 
+                    checked={minStar === "100"}
                     onChange={() => setMinStar("100")}/>
                 100+
                 </label>
@@ -79,6 +83,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
                     type="radio" 
                     name="minStars" 
                     value="1000" 
+                    checked={minStar === "1000"}
                     onChange={() => setMinStar("1000")}/>
                 1,000+
                 </label>
@@ -88,6 +93,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
                     type="radio" 
                     name="minStars" 
                     value="10000" 
+                    checked={minStar === "10000"}
                     onChange={() => setMinStar("10000")}/>
                 10,000+
                 </label>
@@ -102,6 +108,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
                 <select 
                     className="repoSortPanel__group--select" 
                     id="updated"
+                    value={filterUpdate}
                     onChange={e => setUpdate(e.target.value)}>
 
                     <option className="repoSortPanel__group--item" value="any">Any time</option>
@@ -121,6 +128,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
                 <select 
                     className="repoSortPanel__group--select" 
                     id="sorted"
+                    value={sortData}
                     onChange={e => setSort(e.target.value)}>
                     
                     <option className="repoSortPanel__group--item" value="any">Any items</option>
@@ -136,16 +144,19 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
             <div className="repoSortPanel__btn--wrapper">
                 <button 
                     className="repoSortPanel__btn"
+                    disabled = {isItems}
                     onClick={() => (setPage(1), handleSort({
                         language: "any",
                         minStars: "any",
                         updated: "any",
                         sortBy: "any",
-                    }))}>
+                    }), setLanguage("any"), setMinStar("any"),
+                        setUpdate("any"), setSort("any"))}>
                     Reset
                 </button>
                 <button 
                     className="repoSortPanel__btn"
+                    disabled = {isItems}
                     onClick={() => (setPage(1), handleSort({
                         language: filterLanguage,
                         minStars: minStar,

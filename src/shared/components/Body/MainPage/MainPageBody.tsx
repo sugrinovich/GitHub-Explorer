@@ -14,7 +14,7 @@ interface MainPageBodyProps {
 export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
 
     const {
-        isLoading, resetAt, items, page, totalPages, 
+        isLoading, resetAt, items, allItems, page, totalPages, 
         firstPage, startIndex, endIndex, handleNext, 
         handlePrevious, setPage, searchRepos, handleSort
     } = useRepoExplorer();
@@ -24,7 +24,7 @@ export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
             <RepoSearch onSearch={searchRepos} isLoading={isLoading} secondsLeft={resetAt}/>
             <h3 className="Body__title">Explore repositories</h3>
             <div className="Body__data">
-                <RepoSortPanel items={items} handleSort={handleSort} setPage={setPage}/>
+                <RepoSortPanel items={allItems} handleSort={handleSort} setPage={setPage}/>
                 <div className="Body__list">
                     <RepoCards items={items} 
                                start={startIndex} 

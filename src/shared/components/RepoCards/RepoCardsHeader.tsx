@@ -8,6 +8,7 @@ interface RepoCardsHeaderProps {
 }
 
 export function RepoCardsHeader({ repository, toggleFavorite, favorites}: RepoCardsHeaderProps) {
+    
     const isFavorite = favorites.some(el => el.id === repository.id);
     return (
         <div className="repoCards__header">

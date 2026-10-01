@@ -7,6 +7,9 @@
   border-bottom: 1px solid var(--border);
   background-color: var(--bg);
 }
+.header__title {
+  font-size: 30px;
+}
 
 .menu {
   position: absolute;
@@ -21,6 +24,7 @@
 }
 .menu__item {
     font-weight: 500;
+    font-size: 20px;
 }
 .menu__item--active {
     color: var(--accent);
