@@ -4,11 +4,11 @@ import "./RepoCards.css";
 interface RepoCardsHeaderProps {
     repository: GitHubRepository;
     toggleFavorite: (repository: GitHubRepository) => void;
-    storage: GitHubRepository[];
+    favorites: GitHubRepository[];
 }
 
-export function RepoCardsHeader({ repository, toggleFavorite, storage}: RepoCardsHeaderProps) {
-    const isFavorite = storage.some(el => el.id === repository.id);
+export function RepoCardsHeader({ repository, toggleFavorite, favorites}: RepoCardsHeaderProps) {
+    const isFavorite = favorites.some(el => el.id === repository.id);
     return (
         <div className="repoCards__header">
             <div className="repoCards__header--avatar">

@@ -8,11 +8,11 @@ interface RepoCardsProps {
     start: number;
     end: number;
     toggleFavorite: (repository: GitHubRepository) => void;
-    storage: GitHubRepository[];
+    favorites: GitHubRepository[];
     firstPage: number;
 }
 
-export function RepoCards({items, start, end, toggleFavorite, storage, firstPage}: RepoCardsProps) {
+export function RepoCards({items, start, end, toggleFavorite, favorites, firstPage}: RepoCardsProps) {
     return (
         <section style = {{
             display: "flex",
@@ -30,7 +30,7 @@ export function RepoCards({items, start, end, toggleFavorite, storage, firstPage
                     key={repository.id}
                     className="repoCards"
                 >
-                    <RepoCardsHeader repository={repository} toggleFavorite={toggleFavorite} storage={storage}/>
+                    <RepoCardsHeader repository={repository} toggleFavorite={toggleFavorite} favorites={favorites}/>
 
                     <div className="repoCards__description">
 

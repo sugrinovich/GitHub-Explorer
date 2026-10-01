@@ -1,17 +1,17 @@
-import { MainPageBody } from "../shared/components/Body/MainPage/MainPageBody";
 import { Header } from "../shared/components/Header/Header";
 import type { GitHubRepository } from "../shared/types/types";
+import { SavedPageBody } from "../shared/components/Body/SavedPage/SavedPageBody";
 
-interface MainPageProps {
+interface SavedPageProps {
     favorites: GitHubRepository[];
     toggleFavorite: (repository: GitHubRepository) => void;
 }
 
-export function MainPage({ favorites, toggleFavorite }: MainPageProps) {
+export function SavedPage({ favorites, toggleFavorite }: SavedPageProps) {
     return (
         <>
             <Header/>
-            <MainPageBody favorites={favorites} toggleFavorite={toggleFavorite}/>
+            <SavedPageBody favorites={favorites} toggleFavorite={toggleFavorite}/>
         </>
     )
 }

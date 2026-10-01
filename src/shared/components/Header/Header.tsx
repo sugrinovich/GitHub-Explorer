@@ -20,7 +20,7 @@ export function Header () {
                     <li>
                         <NavLink
                             className={({ isActive }) => isActive ? "menu__item menu__item--active" : "menu__item"}
-                            to="/saved"
+                            to="/SavedPage"
                         >
                             Saved
                         </NavLink>

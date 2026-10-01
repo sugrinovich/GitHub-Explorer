@@ -1,10 +1,10 @@
 import "./MainPageBody.css"
-import { RepoSortPanel } from "../RepoSort/RepoSortPanel";
-import { RepoCards } from "../RepoCards/RepoCards";
-import { RepoSearch } from "../RepoSearch/RepoSearch";
-import { Pagination } from "../Pagination/Pagination";
-import type { GitHubRepository } from "../../types/types";
-import { useRepoExplorer } from "../../hooks/useRepoExplorer";
+import { RepoSortPanel } from "../../RepoSort/RepoSortPanel";
+import { RepoCards } from "../../RepoCards/RepoCards";
+import { RepoSearch } from "../../RepoSearch/RepoSearch";
+import { Pagination } from "../../Pagination/Pagination";
+import type { GitHubRepository } from "../../../types/types";
+import { useRepoExplorer } from "../../../hooks/useRepoExplorer";
 
 interface MainPageBodyProps {
     favorites: GitHubRepository[];
@@ -31,7 +31,7 @@ export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
                                end={endIndex} 
                                firstPage={firstPage}
                                toggleFavorite={toggleFavorite} 
-                               storage={favorites}/>
+                               favorites={favorites}/>
                     <Pagination page={page} 
                                 totalPages={totalPages} 
                                 handleNext={handleNext} 
