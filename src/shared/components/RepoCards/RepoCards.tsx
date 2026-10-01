@@ -1,3 +1,4 @@
+import { href } from "react-router-dom";
 import type {GitHubRepository} from "../../types/types";
 import { RepoCardsBody } from "./RepoCardsBody";
 import { RepoCardsHeader } from "./RepoCardsHeader";
@@ -13,6 +14,11 @@ interface RepoCardsProps {
 }
 
 export function RepoCards({items, start, end, toggleFavorite, favorites, firstPage}: RepoCardsProps) {
+
+    const getDescription = (text: string | null) => {
+        if (!text) return "No description";
+        return text.length > 128 ? text.slice(0, 128) + "..." : text;
+    };
     return (
         <section style = {{
             display: "flex",
@@ -29,13 +35,17 @@ export function RepoCards({items, start, end, toggleFavorite, favorites, firstPa
                 <div
                     key={repository.id}
                     className="repoCards"
+                    style={{
+                        cursor: "pointer"
+                    }}
+                    onClick={() => open(repository.html_url)}
                 >
                     <RepoCardsHeader repository={repository} toggleFavorite={toggleFavorite} favorites={favorites}/>
 
                     <div className="repoCards__description">
 
                         <p className="repoCards__description--text">
-                            {(repository.description) ? repository.description : "No description"}
+                            {getDescription(repository.description)}
                         </p>
                         <RepoCardsBody repository={repository}/>
 

@@ -33,7 +33,10 @@
     margin-bottom: 0;
 }
 .repoSortPanel__group--item {
-    display: block;
+    display: flex;
+    align-items: center;  
+    gap: 10px;
+    cursor: pointer;
     margin-top: 10px;
 }
 .repoSortPanel__btn:last-child {

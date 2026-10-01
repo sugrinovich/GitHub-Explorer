@@ -21,7 +21,11 @@ export function RepoCardsHeader({ repository, toggleFavorite, favorites}: RepoCa
             </h3>
 
             <button className="repoCards__header--button"
-                onClick={() => toggleFavorite(repository)}>
+                onClick={(e) =>{
+                    e.preventDefault(),
+                    e.stopPropagation(),
+                    toggleFavorite(repository)
+                }}>
                 {(isFavorite) ? "Delete" : "Save"}
             </button>
         </div>

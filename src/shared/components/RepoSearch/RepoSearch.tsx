@@ -17,7 +17,7 @@ export function RepoSearch({onSearch, isLoading, secondsLeft}: RepoSearchProps) 
     return (
         <section className="repoSearch">
             <h3 className="repoSearch__title">Find your next favorite repo.</h3>
-            <p className="repoSearch__descrption">Explore open-source projects by language, community, and momentum.</p>
+            <p className="repoSearch__descrption">Explore open-source projects.</p>
             <div className="repoSearch--wrapper">
                 <span className="repoSearch__icon">🔍</span>
                 <input className="repoSearch__input"
