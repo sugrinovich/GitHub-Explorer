@@ -4,7 +4,7 @@
 
 ![Скриншот GitHub Explorer](./src/docs/Screenshot.png)
 
-**Демо:** тут будет ссылка
+**Демо:** https://github-explorer-aibfhmopf-sugr1.vercel.app
 
 ## Возможности
 
