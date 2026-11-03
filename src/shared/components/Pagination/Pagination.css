@@ -27,6 +27,10 @@
     margin-left: 15px;
     transition: transform 0.2s ease;
 }
-.pagination__buttons--item:hover {
+.pagination__buttons--item:not(:disabled):hover {
     transform: scale(1.15);
+}
+.pagination__buttons--item:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }

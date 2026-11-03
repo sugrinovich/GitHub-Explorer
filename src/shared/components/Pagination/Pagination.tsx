@@ -9,18 +9,24 @@ interface PaginationProps {
 }
 
 export function Pagination({page, totalPages, handleNext, handlePrev}: PaginationProps) {
+    if (totalPages === 0) return null;
+
     return (
         <div className="pagination">
             <p>
-                Showing {page} of {totalPages} pages.
+                Page {page} of {totalPages}
             </p>
             <div className="pagination__buttons">
-                <button 
+                <button
                     className="pagination__buttons--item"
-                    onClick={() => handlePrev()}>Previous</button>
-                <button 
+                    type="button"
+                    disabled={page <= 1}
+                    onClick={handlePrev}>← Previous</button>
+                <button
                     className="pagination__buttons--item"
-                    onClick={() => handleNext()}>Next →</button>
+                    type="button"
+                    disabled={page >= totalPages}
+                    onClick={handleNext}>Next →</button>
             </div>
         </div>
     )

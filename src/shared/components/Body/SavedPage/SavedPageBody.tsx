@@ -4,7 +4,7 @@ import { Pagination } from "../../Pagination/Pagination";
 import { RepoCards } from "../../RepoCards/RepoCards";
 import { RepoSortPanel } from "../../RepoSort/RepoSortPanel";
 import { filterRepositories } from "../../../hooks/useFilterSort";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./SavedPageBody.css"
 
 interface SavedPageBodyProps {
@@ -42,10 +42,6 @@ export function SavedPageBody({favorites, toggleFavorite}: SavedPageBodyProps) {
         setFilters(newFilters);
         setPage(1);
     }
-
-    useEffect(() => {
-        if (totalPages === 0) setPage(0);
-    }, [totalPages])
 
     return (
         <section style={{
