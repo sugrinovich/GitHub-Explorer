@@ -28,3 +28,9 @@
     background-color: var(--accent-bg);
     color: var(--text-h);
 }
+
+@media (max-width: 900px) {
+    .Body__data {
+        grid-template-columns: 1fr;
+    }
+}

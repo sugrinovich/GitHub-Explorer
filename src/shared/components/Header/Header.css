@@ -29,3 +29,24 @@
 .menu__item--active {
     color: var(--accent);
 }
+
+@media (max-width: 640px) {
+  .header {
+    padding: 0 16px;
+    height: 64px;
+  }
+  .header__title {
+    font-size: 22px;
+  }
+  .menu {
+    position: static;
+    transform: none;
+    margin-left: auto;
+  }
+  .menu__list {
+    gap: 16px;
+  }
+  .menu__item {
+    font-size: 16px;
+  }
+}

@@ -34,3 +34,10 @@
     opacity: 0.4;
     cursor: not-allowed;
 }
+
+@media (max-width: 640px) {
+    .pagination {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}

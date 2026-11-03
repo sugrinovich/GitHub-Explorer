@@ -61,7 +61,7 @@
     background-color: var(--lang-color, var(--accent));
     padding: 5px 10px;
     border-radius: 20px;
-    margin-left: 20px;
+    margin: 8px 0 0 20px;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -71,4 +71,20 @@
 .repoSearch__tags--item:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .repoSearch__title {
+        font-size: 28px;
+    }
+    .repoSearch__input {
+        padding: 16px 120px 16px 44px;
+    }
+    .repoSearch__button {
+        right: 8px;
+        font-size: 15px;
+    }
+    .repoSearch__tags--item {
+        margin-left: 8px;
+    }
 }
