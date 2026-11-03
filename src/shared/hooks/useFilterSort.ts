@@ -20,7 +20,7 @@ export function filterRepositories(items: GitHubRepository[], filters: SortFilte
 
     if (filters.minStars !== "any") {
         result = result.filter(
-            el => el.stargazers_count > Number(filters.minStars)
+            el => el.stargazers_count >= Number(filters.minStars)
         );
     }
 

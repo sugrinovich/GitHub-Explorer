@@ -28,6 +28,8 @@ export function useRepoExplorer() {
     const [error, setError] = useState<string | null>(null);
     const [allItems, setAllItems] = useState<GitHubRepository[]>([]);
     const [items, setItems] = useState(allItems);
+    // Меняется после каждого успешного поиска — по нему сбрасывается панель фильтров
+    const [searchId, setSearchId] = useState(0);
     const abortRef = useRef<AbortController | null>(null);
 
     useEffect(() => {
@@ -102,6 +104,7 @@ export function useRepoExplorer() {
 
             setAllItems(allResults);
             setItems(allResults);
+            setSearchId(id => id + 1);
             pagination.setPage(1);
 
         } catch(error){
@@ -128,7 +131,7 @@ export function useRepoExplorer() {
     return {
         isLoading, resetAt, error,
         searchRepos,
-        items, allItems,
+        items, allItems, searchId,
         handleSort,
         ...pagination
     };
