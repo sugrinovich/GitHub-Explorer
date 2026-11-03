@@ -17,3 +17,10 @@ export type GitHubRepository = {
         avatar_url: string;
     }
 }
+
+export type SortFilters = {
+    language: string;
+    minStars: string;
+    updated: string;
+    sortBy: keyof GitHubRepository | "any";
+};

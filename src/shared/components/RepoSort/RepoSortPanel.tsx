@@ -1,5 +1,6 @@
 import "./RepoSort.css"
-import type {GitHubRepository} from "../../types/types";
+import type { GitHubRepository, SortFilters } from "../../types/types";
+import { DEFAULT_FILTERS } from "../../utils/filterRepositories";
 import { useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
@@ -7,18 +8,13 @@ import type { Dispatch, SetStateAction } from "react";
 interface RepoSortPanelProps {
 
     items: GitHubRepository[];
-    handleSort: (filters: {
-        language: string;
-        minStars: string;
-        updated: string;
-        sortBy: keyof GitHubRepository | "any";
-    }) => void;
+    handleSort: (filters: SortFilters) => void;
     setPage: Dispatch<SetStateAction<number>>;
 }
 
 export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) {
 
-    const isItems = (items.length === 0) ? true : false;
+    const isItems = items.length === 0;
 
     const languageOptions = items.reduce<string[]>((arr, cur) => {
         if (cur.language && !arr.some(lang => lang.toLocaleLowerCase() === cur.language?.toLocaleLowerCase())) arr.push(cur.language);
@@ -30,6 +26,25 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
     const [minStar, setMinStar] = useState("any");
     const [filterUpdate, setUpdate] = useState("any");
     const [sortData, setSort] = useState("any")
+
+    function handleReset() {
+        setLanguage("any");
+        setMinStar("any");
+        setUpdate("any");
+        setSort("any");
+        setPage(1);
+        handleSort(DEFAULT_FILTERS);
+    }
+
+    function handleApply() {
+        setPage(1);
+        handleSort({
+            language: filterLanguage,
+            minStars: minStar,
+            updated: filterUpdate,
+            sortBy: sortData as SortFilters["sortBy"],
+        });
+    }
 
     return (
 
@@ -144,26 +159,17 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
             <div className="repoSortPanel__btn--wrapper">
                 <button 
                     className="repoSortPanel__btn"
-                    disabled = {isItems}
-                    onClick={() => (setPage(1), handleSort({
-                        language: "any",
-                        minStars: "any",
-                        updated: "any",
-                        sortBy: "any",
-                    }), setLanguage("any"), setMinStar("any"),
-                        setUpdate("any"), setSort("any"))}>
+                    type="button"
+                    disabled={isItems}
+                    onClick={handleReset}>
                     Reset
                 </button>
                 <button 
                     className="repoSortPanel__btn"
-                    disabled = {isItems}
-                    onClick={() => (setPage(1), handleSort({
-                        language: filterLanguage,
-                        minStars: minStar,
-                        updated: filterUpdate,
-                        sortBy: sortData as keyof GitHubRepository | "any",
-                    }))}>
-                    To sort
+                    type="button"
+                    disabled={isItems}
+                    onClick={handleApply}>
+                    Apply
                 </button>
             </div>
         

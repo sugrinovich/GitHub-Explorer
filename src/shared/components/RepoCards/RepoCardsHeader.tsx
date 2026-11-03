@@ -1,5 +1,4 @@
 import type { GitHubRepository } from "../../types/types";
-import "./RepoCards.css";
 
 interface RepoCardsHeaderProps {
     repository: GitHubRepository;

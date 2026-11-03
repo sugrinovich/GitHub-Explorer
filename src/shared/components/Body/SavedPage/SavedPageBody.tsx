@@ -1,9 +1,9 @@
 import { usePaginations } from "../../../hooks/usePaginations";
-import type { GitHubRepository } from "../../../types/types";
+import type { GitHubRepository, SortFilters } from "../../../types/types";
 import { Pagination } from "../../Pagination/Pagination";
 import { RepoCards } from "../../RepoCards/RepoCards";
 import { RepoSortPanel } from "../../RepoSort/RepoSortPanel";
-import { filterRepositories } from "../../../hooks/useFilterSort";
+import { DEFAULT_FILTERS, filterRepositories } from "../../../utils/filterRepositories";
 import { useState } from "react";
 import "./SavedPageBody.css"
 
@@ -11,20 +11,6 @@ interface SavedPageBodyProps {
     favorites: GitHubRepository[];
     toggleFavorite: (repository: GitHubRepository) => void;
 }
-
-type SortFilters = {
-    language: string;
-    minStars: string;
-    updated: string;
-    sortBy: keyof GitHubRepository | "any";
-};
-
-const DEFAULT_FILTERS: SortFilters = {
-    language: "any",
-    minStars: "any",
-    updated: "any",
-    sortBy: "any",
-};
 
 export function SavedPageBody({favorites, toggleFavorite}: SavedPageBodyProps) {
 
@@ -44,10 +30,7 @@ export function SavedPageBody({favorites, toggleFavorite}: SavedPageBodyProps) {
     }
 
     return (
-        <section style={{
-            width: "90%",
-            margin: "auto"
-        }}>
+        <section className="Body">
             <h3 className="Body__title">See your favorite repositories</h3>
             <div className="Body__data">
                 <RepoSortPanel items={favorites} handleSort={handleSort} setPage={setPage}/>

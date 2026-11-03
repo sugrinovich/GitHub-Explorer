@@ -1,11 +1,11 @@
-import { isWithinUpdateFilter } from "../utils/getFilteredDate";
-import type { GitHubRepository } from "../types/types";
+import { isWithinUpdateFilter } from "./getFilteredDate";
+import type { GitHubRepository, SortFilters } from "../types/types";
 
-export type SortFilters = {
-    language: string;
-    minStars: string;
-    updated: string;
-    sortBy: keyof GitHubRepository | "any";
+export const DEFAULT_FILTERS: SortFilters = {
+    language: "any",
+    minStars: "any",
+    updated: "any",
+    sortBy: "any",
 };
 
 export function filterRepositories(items: GitHubRepository[], filters: SortFilters) {

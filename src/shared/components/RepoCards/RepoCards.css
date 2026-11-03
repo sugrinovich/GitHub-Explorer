@@ -1,3 +1,10 @@
+.repoCards__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
 .repoCards {
     position: relative;
     display: flex;
@@ -129,6 +136,10 @@
 .repoCards__body--text:last-child {
     color: var(--text);
     font-size: 14px;
+}
+
+.repoCards__body--updated {
+    margin-left: auto;
 }
 
 /* === Description === */

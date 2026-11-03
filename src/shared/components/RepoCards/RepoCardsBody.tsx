@@ -1,7 +1,6 @@
 import { numberFormatter } from "../../utils/numbersFormatter";
 import { dateFormatter} from "../../utils/dateFormatter";
 import type { GitHubRepository } from "../../types/types";
-import "./RepoCards.css";
 import { getLanguageColor } from "../../utils/getLanguageColor";
 
 interface RepoCardsBodyProps {
@@ -27,7 +26,7 @@ export function RepoCardsBody({ repository }: RepoCardsBodyProps) {
                 {numberFormatter(repository.open_issues_count)}
             </p>
 
-            <p className="repoCards__body--text" style={{ margin: "0 0 0 auto" }}>
+            <p className="repoCards__body--text repoCards__body--updated">
                 {"Updated " + dateFormatter(repository.updated_at)}
             </p>
         </div>

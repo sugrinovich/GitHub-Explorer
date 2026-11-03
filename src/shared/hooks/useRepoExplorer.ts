@@ -1,14 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import type { GitHubRepository, GitHubSearchResponse } from "../types/types";
+import type { GitHubRepository, GitHubSearchResponse, SortFilters } from "../types/types";
 import { usePaginations } from "./usePaginations";
-import { filterRepositories } from "./useFilterSort";
-
-type SortFilters = {
-    language: string;
-    minStars: string;
-    updated: string;
-    sortBy: keyof GitHubRepository | "any";
-};
+import { filterRepositories } from "../utils/filterRepositories";
 
 const PER_PAGE = 100;
 // Сколько страниц по 100 репозиториев загружаем за один поиск (лимит GitHub — 10 запросов в минуту)

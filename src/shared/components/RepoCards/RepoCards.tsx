@@ -1,6 +1,7 @@
 import type {GitHubRepository} from "../../types/types";
 import { RepoCardsBody } from "./RepoCardsBody";
 import { RepoCardsHeader } from "./RepoCardsHeader";
+import "./RepoCards.css";
 
 interface RepoCardsProps {
 
@@ -20,13 +21,7 @@ export function RepoCards({items, start, end, toggleFavorite, favorites, firstPa
         return text.length > 128 ? text.slice(0, 128) + "..." : text;
     };
     return (
-        <section style = {{
-            display: "flex",
-            gap: "1rem",
-            flexDirection: "column",
-            flex: "1"
-
-        }}>
+        <section className="repoCards__list">
 
         {
             firstPage === 0 ? <div className="Extra">
