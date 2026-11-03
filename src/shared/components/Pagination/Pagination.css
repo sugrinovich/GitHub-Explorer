@@ -37,6 +37,7 @@
 
 @media (max-width: 640px) {
     .pagination {
+        margin-top: 15px;
         flex-wrap: wrap;
         gap: 10px;
     }
