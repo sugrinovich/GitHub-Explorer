@@ -18,6 +18,14 @@
     display: block;
     padding: 0;
 }
+/* legend по умолчанию «садится» на рамку fieldset — делаем его обычным блоком */
+legend.repoSortPanel__group--title {
+    float: left;
+    width: 100%;
+}
+legend.repoSortPanel__group--title + .repoSortPanel__group--item {
+    clear: both;
+}
 .repoSortPanel__group--select {
     margin-top: 10px;
     width: 95%;

@@ -9,7 +9,7 @@
     font-size: 40px;
     margin-top: 2rem;
 }
-.repoSearch__descrption {
+.repoSearch__description {
     margin-top: 0.8rem;
     font-weight: 500;
 }
@@ -44,8 +44,12 @@
     font-size: 18px;
     transition: transform 0.2s ease;
 }
-.repoSearch__button:hover  {
+.repoSearch__button:not(:disabled):hover  {
     transform: translateY(-50%) scale(1.15);
+}
+.repoSearch__button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 .repoSearch__tags {
     margin-top: 0.8rem;
@@ -61,6 +65,10 @@
     cursor: pointer;
     transition: transform 0.2s ease;
 }
-.repoSearch__tags--item:hover {
+.repoSearch__tags--item:not(:disabled):hover {
     transform: scale(1.15);
+}
+.repoSearch__tags--item:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }

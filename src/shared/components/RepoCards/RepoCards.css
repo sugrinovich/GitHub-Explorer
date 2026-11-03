@@ -1,4 +1,5 @@
 .repoCards {
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: var(--bg);
@@ -37,7 +38,24 @@
     color: var(--text-h);
 }
 
+/* Вся карточка кликабельна: псевдоэлемент ссылки растягивается на неё целиком */
+.repoCards__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+.repoCards:has(.repoCards__link:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+.repoCards__link:focus-visible {
+    outline: none;
+}
+
 .repoCards__header--button {
+    position: relative;
+    z-index: 1;
     margin-left: auto;
     height: 40px;
     display: flex;

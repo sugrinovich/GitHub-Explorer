@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./RepoSearch.css"
-import { getLanguageColor } from "../../utils/getLanguageColor";
-getLanguageColor
 
 interface RepoSearchProps {
 
@@ -10,62 +8,60 @@ interface RepoSearchProps {
     secondsLeft: number;
 }
 
+const POPULAR_SEARCHES = [
+    { query: "react", color: "#da093d" },
+    { query: "typescript", color: "#3178c6" },
+    { query: "developer tools", color: "#8250df" },
+    { query: "ai agents", color: "#56da09" },
+];
+
 export function RepoSearch({onSearch, isLoading, secondsLeft}: RepoSearchProps) {
 
     const [inputValue, setValue] = useState("");
+    const isDisabled = isLoading || secondsLeft > 0;
+
+    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        if (!isDisabled) onSearch(inputValue);
+    }
+
+    function handleTagClick(query: string) {
+        setValue(query);
+        onSearch(query);
+    }
 
     return (
         <section className="repoSearch">
             <h3 className="repoSearch__title">Find your next favorite repo.</h3>
-            <p className="repoSearch__descrption">Explore open-source projects.</p>
-            <div className="repoSearch--wrapper">
-                <span className="repoSearch__icon">🔍</span>
+            <p className="repoSearch__description">Explore open-source projects.</p>
+            <form className="repoSearch--wrapper" role="search" onSubmit={handleSubmit}>
+                <span className="repoSearch__icon" aria-hidden="true">🔍</span>
                 <input className="repoSearch__input"
                         type="text"
                         placeholder="Search repositories"
+                        aria-label="Search repositories"
+                        value={inputValue}
                         onChange={e => setValue(e.target.value)}/>
-                <button 
+                <button
                 className="repoSearch__button"
-                type="button"
-                onClick={() => onSearch(inputValue)}
-                disabled={isLoading || secondsLeft > 0}>
-                    {isLoading ? "Loading..." : secondsLeft ? `Reset at ${secondsLeft}` : "Search repo"}
+                type="submit"
+                disabled={isDisabled}>
+                    {isLoading ? "Loading..." : secondsLeft > 0 ? `Wait ${secondsLeft}s` : "Search repo"}
                 </button>
-            </div>
+            </form>
 
-            <p className="repoSearch__tags">POPULAR SEARCHES: 
-                <span className="repoSearch__tags--item" 
-                    style={{ "--lang-color": getLanguageColor("React") 
-                    } as React.CSSProperties}
-                    onClick={() => {
-                        if (secondsLeft === 0) onSearch("react")
-                    }}>
-                    react
-                </span>
-                <span className="repoSearch__tags--item" 
-                    style={{ "--lang-color": getLanguageColor("TypeScript") 
-                    } as React.CSSProperties}
-                    onClick={() => {
-                        if (secondsLeft === 0) onSearch("typescript")
-                    }}>
-                    typescript
-                    </span>
-                <span className="repoSearch__tags--item" 
-                    style={{ "--lang-color": getLanguageColor("Developer tools") 
-                    } as React.CSSProperties}
-                    onClick={() => {
-                        if (secondsLeft === 0) onSearch("developer tools")
-                    }}>
-                    developer tool
-                    </span>
-                <span className="repoSearch__tags--item" 
-                    style={{ "--lang-color": getLanguageColor("Ai agents") 
-                    } as React.CSSProperties}
-                    onClick={() => {
-                        if (secondsLeft === 0) onSearch("ai agents")
-                    }}>
-                    ai agents
-                </span></p>
+            <p className="repoSearch__tags">POPULAR SEARCHES:
+                {POPULAR_SEARCHES.map(tag => (
+                    <button key={tag.query}
+                        className="repoSearch__tags--item"
+                        type="button"
+                        style={{ "--lang-color": tag.color } as React.CSSProperties}
+                        disabled={isDisabled}
+                        onClick={() => handleTagClick(tag.query)}>
+                        {tag.query}
+                    </button>
+                ))}
+            </p>
         </section>
     )
 }

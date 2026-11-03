@@ -56,7 +56,7 @@ export function RepoSortPanel({items, handleSort, setPage}: RepoSortPanelProps) 
             <hr className="repoSortPanel__line" />
 
             <fieldset className="repoSortPanel__group">
-                <label className="repoSortPanel__group--title">MINIMUM STARS</label>
+                <legend className="repoSortPanel__group--title">MINIMUM STARS</legend>
 
                 <label className="repoSortPanel__group--item">
                 <input 

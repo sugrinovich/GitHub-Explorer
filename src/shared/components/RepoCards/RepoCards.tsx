@@ -34,10 +34,6 @@ export function RepoCards({items, start, end, toggleFavorite, favorites, firstPa
                 <div
                     key={repository.id}
                     className="repoCards"
-                    style={{
-                        cursor: "pointer"
-                    }}
-                    onClick={() => open(repository.html_url)}
                 >
                     <RepoCardsHeader repository={repository} toggleFavorite={toggleFavorite} favorites={favorites}/>
 

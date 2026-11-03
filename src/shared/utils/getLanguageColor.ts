@@ -40,10 +40,6 @@ const LANGUAGE_COLORS: Record<string, string> = {
     OCaml: "#3be133",
     Zig: "#ec915c",
     Solidity: "#AA6746",
-
-    "Developer tools": "#8250df",
-    "Ai agents": "#56da09",
-    "React": "#da093d"
 };
 
 const DEFAULT_LANGUAGE_COLOR = "#8b949e";
