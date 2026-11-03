@@ -56,6 +56,9 @@ export function SavedPageBody({favorites, toggleFavorite}: SavedPageBodyProps) {
                                 start={startIndex} 
                                 end={endIndex} 
                                 firstPage={firstPage}
+                                emptyText={favorites.length === 0
+                                    ? "No saved repositories yet"
+                                    : "No saved repositories match these filters"}
                                 toggleFavorite={toggleFavorite} 
                                 favorites={favorites}/>
                     <Pagination page={page} 

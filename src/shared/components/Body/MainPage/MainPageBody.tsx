@@ -19,6 +19,10 @@ export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
         handlePrevious, setPage, searchRepos, handleSort
     } = useRepoExplorer();
 
+    const emptyText = isLoading ? "Loading..."
+        : searchId === 0 ? "Search for repositories to get started"
+        : "Nothing found. Try another query or filters";
+
     return (
         <section className="Body">
             <RepoSearch onSearch={searchRepos} isLoading={isLoading} secondsLeft={resetAt}/>
@@ -31,6 +35,7 @@ export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
                                start={startIndex} 
                                end={endIndex} 
                                firstPage={firstPage}
+                               emptyText={emptyText}
                                toggleFavorite={toggleFavorite} 
                                favorites={favorites}/>
                     <Pagination page={page} 

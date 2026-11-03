@@ -155,5 +155,10 @@
 .Extra__title {
     font-size: 30px;
     font-weight: 700;
-    color: var(--text); 
+    color: var(--text);
+}
+.Extra {
+    min-height: 200px;
+    padding: 20px;
+    text-align: center;
 }

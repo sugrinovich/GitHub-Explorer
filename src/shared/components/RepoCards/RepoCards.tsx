@@ -10,9 +10,10 @@ interface RepoCardsProps {
     toggleFavorite: (repository: GitHubRepository) => void;
     favorites: GitHubRepository[];
     firstPage: number;
+    emptyText: string;
 }
 
-export function RepoCards({items, start, end, toggleFavorite, favorites, firstPage}: RepoCardsProps) {
+export function RepoCards({items, start, end, toggleFavorite, favorites, firstPage, emptyText}: RepoCardsProps) {
 
     const getDescription = (text: string | null) => {
         if (!text) return "No description";
@@ -29,7 +30,7 @@ export function RepoCards({items, start, end, toggleFavorite, favorites, firstPa
 
         {
             firstPage === 0 ? <div className="Extra">
-                                <p className="Extra__title">Empty for now</p>
+                                <p className="Extra__title">{emptyText}</p>
                             </div> : items.slice(start, end).map(repository => (
                 <div
                     key={repository.id}
