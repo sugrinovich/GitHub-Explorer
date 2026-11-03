@@ -14,8 +14,8 @@ interface MainPageBodyProps {
 export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
 
     const {
-        isLoading, resetAt, items, allItems, page, totalPages, 
-        firstPage, startIndex, endIndex, handleNext, 
+        isLoading, resetAt, error, items, allItems, page, totalPages,
+        firstPage, startIndex, endIndex, handleNext,
         handlePrevious, setPage, searchRepos, handleSort
     } = useRepoExplorer();
 
@@ -23,6 +23,7 @@ export function MainPageBody({ favorites, toggleFavorite }: MainPageBodyProps) {
         <section className="Body">
             <RepoSearch onSearch={searchRepos} isLoading={isLoading} secondsLeft={resetAt}/>
             <h3 className="Body__title">Explore repositories</h3>
+            {error && <p className="Body__error" role="alert">{error}</p>}
             <div className="Body__data">
                 <RepoSortPanel items={allItems} handleSort={handleSort} setPage={setPage}/>
                 <div className="Body__list">
